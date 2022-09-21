@@ -2,29 +2,28 @@ import 'package:qtec_asssessment/models/search/product_details.dart';
 
 class Products {
   Products({
-    required this.count,
-    required this.next,
-    required this.previous,
-    required this.results,
+    this.count,
+    this.next,
+    this.previous,
+    this.searchProducts,
   });
 
-  int count;
-  String next;
-  String previous;
-  List<Result> results;
+  int? count;
+  String? next, previous;
+  List<SearchProducts>? searchProducts;
 
   factory Products.fromJson(Map<String, dynamic> json) => Products(
-    count: json["count"],
-    next: json["next"],
-    previous: json["previous"],
-    results:
-    List<Result>.from(json["results"].map((x) => Result.fromJson(x))),
-  );
+        count: json["count"],
+        next: json["next"],
+        previous: json["previous"],
+        searchProducts: List<SearchProducts>.from(
+            json["results"].map((x) => SearchProducts.fromJson(x))),
+      );
 
   Map<String, dynamic> toJson() => {
-    "count": count,
-    "next": next,
-    "previous": previous,
-    "results": List<dynamic>.from(results.map((x) => x.toJson())),
-  };
+        "count": count,
+        "next": next,
+        "previous": previous,
+        "results": List<dynamic>.from(searchProducts!.map((x) => x.toJson())),
+      };
 }

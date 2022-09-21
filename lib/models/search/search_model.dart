@@ -9,12 +9,12 @@ String searchModelToJson(SearchModel data) => json.encode(data.toJson());
 
 class SearchModel {
   SearchModel({
-    required this.status,
-    required this.data,
+    this.status,
+    this.data,
   });
 
-  String status;
-  Data data;
+  String? status;
+  Data? data;
 
   factory SearchModel.fromJson(Map<String, dynamic> json) => SearchModel(
         status: json["status"],
@@ -23,8 +23,6 @@ class SearchModel {
 
   Map<String, dynamic> toJson() => {
         "status": status,
-        "data": data.toJson(),
+        "data": data!.toJson(),
       };
 }
-
-

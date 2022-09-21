@@ -4,84 +4,71 @@ import 'brand_model.dart';
 import 'charge_model.dart';
 import 'image_model.dart';
 
-class Result {
-  Result({
-    required this.id,
-    required this.brand,
-    required this.image,
-    required this.charge,
-    required this.images,
-    required this.slug,
-    required this.productName,
-    required this.model,
-    required this.commissionType,
-    required this.amount,
-    required this.tag,
-    required this.description,
-    required this.note,
-    required this.embaddedVideoLink,
-    required this.maximumOrder,
-    required this.stock,
-    required this.isBackOrder,
-    required this.specification,
-    required this.warranty,
-    required this.preOrder,
-    required this.productReview,
-    required this.isSeller,
-    required this.isPhone,
-    required this.willShowEmi,
-    required this.badge,
-    required this.isActive,
-    required this.createdAt,
-    required this.updatedAt,
-    required this.language,
-    required this.seller,
-    required this.combo,
-    required this.createdBy,
-    required this.updatedBy,
-    required this.category,
-    required this.relatedProduct,
-    required this.filterValue,
+class SearchProducts {
+  SearchProducts({
+    this.id,
+    this.brand,
+    this.image,
+    this.charge,
+    this.images,
+    this.slug,
+    this.productName,
+    this.model,
+    this.commissionType,
+    this.amount,
+    this.tag,
+    this.description,
+    this.note,
+    this.embaddedVideoLink,
+    this.maximumOrder,
+    this.stock,
+    this.isBackOrder,
+    this.specification,
+    this.warranty,
+    this.preOrder,
+    this.productReview,
+    this.isSeller,
+    this.isPhone,
+    this.willShowEmi,
+    this.badge,
+    this.isActive,
+    this.language,
+    this.seller,
+    this.combo,
+    this.createdBy,
+    this.updatedBy,
+    this.category,
+    this.relatedProduct,
+    this.filterValue,
   });
 
-  int id;
-  Brand brand;
-  String image;
-  Charge charge;
-  List<Image> images;
-  String slug;
-  String productName;
-  String model;
-  CommissionType commissionType;
-  String amount;
-  String tag;
-  String description;
-  String note;
-  String embaddedVideoLink;
-  int maximumOrder;
-  int stock;
-  bool isBackOrder;
-  Specification specification;
-  String warranty;
-  bool preOrder;
-  int productReview;
-  bool isSeller;
-  bool isPhone;
-  bool willShowEmi;
+  int? id;
+  Brand? brand;
+  String? image;
+  Charge? charge;
+  List<Image>? images;
+  String? slug, productName, model;
+  CommissionType? commissionType;
+  String? amount, tag, description, note, embaddedVideoLink;
+  int? maximumOrder, stock;
+  bool? isBackOrder;
+  Specification? specification;
+  String? warranty;
+  bool? preOrder;
+  int? productReview;
+  bool? isSeller, isPhone, willShowEmi;
   dynamic badge;
-  bool isActive;
-  DateTime createdAt;
-  DateTime updatedAt;
+  bool? isActive;
   dynamic language;
-  Seller seller;
+  Seller? seller;
   dynamic combo;
-  CreatedBy createdBy;
+  CreatedBy? createdBy;
   dynamic updatedBy;
-  List<int> category;
-  List<dynamic> relatedProduct;
-  List<dynamic> filterValue;
+  List<int>? category;
+  List<dynamic>? relatedProduct;
+  List<dynamic>? filterValue;
 
-  factory Result.fromJson(Map<String, dynamic> json) => Result(
+  factory SearchProducts.fromJson(Map<String, dynamic> json) => SearchProducts(
         id: json["id"],
         brand: Brand.fromJson(json["brand"]),
         image: json["image"],
@@ -108,8 +95,6 @@ class Result {
         willShowEmi: json["will_show_emi"],
         badge: json["badge"],
         isActive: json["is_active"],
-        createdAt: DateTime.parse(json["created_at"]),
-        updatedAt: DateTime.parse(json["updated_at"]),
         language: json["language"],
         seller: sellerValues.map[json["seller"]]!,
         combo: json["combo"],
@@ -123,10 +108,10 @@ class Result {
 
   Map<String, dynamic> toJson() => {
         "id": id,
-        "brand": brand.toJson(),
+        "brand": brand!.toJson(),
         "image": image,
-        "charge": charge.toJson(),
-        "images": List<dynamic>.from(images.map((x) => x.toJson())),
+        "charge": charge!.toJson(),
+        "images": List<dynamic>.from(images!.map((x) => x.toJson())),
         "slug": slug,
         "product_name": productName,
         "model": model,
@@ -148,15 +133,13 @@ class Result {
         "will_show_emi": willShowEmi,
         "badge": badge,
         "is_active": isActive,
-        "created_at": createdAt.toIso8601String(),
-        "updated_at": updatedAt.toIso8601String(),
         "language": language,
         "seller": sellerValues.reverse[seller],
         "combo": combo,
         "created_by": createdByValues.reverse[createdBy],
         "updated_by": updatedBy,
-        "category": List<dynamic>.from(category.map((x) => x)),
-        "related_product": List<dynamic>.from(relatedProduct.map((x) => x)),
-        "filter_value": List<dynamic>.from(filterValue.map((x) => x)),
+        "category": List<dynamic>.from(category!.map((x) => x)),
+        "related_product": List<dynamic>.from(relatedProduct!.map((x) => x)),
+        "filter_value": List<dynamic>.from(filterValue!.map((x) => x)),
       };
 }
