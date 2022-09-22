@@ -1,15 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:qtec_asssessment/constants.dart';
 import 'package:qtec_asssessment/repositories/search_repository.dart';
 import 'package:qtec_asssessment/views/screens/home/home_page.dart';
+import 'package:qtec_asssessment/views/screens/products/products_page.dart';
+
+import 'bloc/navigation/nav_bloc.dart';
 
 void setupLocator() {
   GetIt.instance.registerLazySingleton(() => SearchRepository());
 }
 
 void main() {
-  runApp(const MyApp());
+  runApp(BlocProvider(
+      create: (BuildContext context) => NavBloc(),
+      child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -21,10 +27,13 @@ class MyApp extends StatelessWidget {
       title: 'Qtec Assessment',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-          primarySwatch: Colors.blue,
-          scaffoldBackgroundColor: hexToColor(bgColor),
+        scaffoldBackgroundColor: hexToColor(bgColor),
       ),
-      home: HomePage(),
+      routes: {
+        '/': (context) => HomePage(),
+        '/products': (context) => ProductsPage(),
+      },
+      initialRoute: '/',
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qtec_asssessment/constants.dart';
 
 class SearchBar extends StatelessWidget {
   const SearchBar({Key? key, required this.searchController}) : super(key: key);
@@ -18,13 +19,13 @@ class SearchBar extends StatelessWidget {
       alignment: Alignment.center,
       child: TextField(
         controller: searchController,
-        decoration: const InputDecoration(
-          suffixIcon: Icon(
+        decoration: InputDecoration(
+          suffixIcon: const Icon(
             Icons.search,
             color: Colors.grey,
           ),
-          hintText: "hintText",
-          hintStyle: TextStyle(color: Colors.grey, fontSize: 14.0),
+          hintText: searchHint,
+          hintStyle: const TextStyle(color: Colors.grey, fontSize: 14.0),
           border: InputBorder.none,
         ),
       ),

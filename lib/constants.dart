@@ -3,6 +3,8 @@ import 'dart:ui';
 String apiUrl = 'https://panel.supplyline.network/api/';
 String buy = 'ক্রয়', sell = 'বিক্রয়', profit = 'লাভ';
 String notStock = 'স্টকে নাই';
+String productBar = 'প্রোডাক্ট ডিটেইল';
+String searchHint = 'কাঙ্ক্ষিত পণ্যটি খুঁজুন';
 
 String color1 = '#DA2079';
 String color2 = '#646464';
