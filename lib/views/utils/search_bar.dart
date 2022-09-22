@@ -1,22 +1,31 @@
 import 'package:flutter/material.dart';
 
 class SearchBar extends StatelessWidget {
-  SearchBar({Key? key, required this.searchController}) : super(key: key);
+  const SearchBar({Key? key, required this.searchController}) : super(key: key);
 
-  TextEditingController searchController;
+  final TextEditingController searchController;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.fromLTRB(20, 0, 20, 15),
-      decoration: const BoxDecoration(
+      height: 48,
+      margin: const EdgeInsets.fromLTRB(7, 0, 7, 16),
+      padding: const EdgeInsets.symmetric(horizontal: 25),
+      decoration: BoxDecoration(
         color: Colors.white,
+        borderRadius: BorderRadius.circular(15),
       ),
+      alignment: Alignment.center,
       child: TextField(
         controller: searchController,
         decoration: const InputDecoration(
-          icon: Icon(Icons.search),
-          hintText: "Search for Keynote Speaker",
+          suffixIcon: Icon(
+            Icons.search,
+            color: Colors.grey,
+          ),
+          hintText: "hintText",
+          hintStyle: TextStyle(color: Colors.grey, fontSize: 14.0),
+          border: InputBorder.none,
         ),
       ),
     );

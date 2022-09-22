@@ -16,11 +16,11 @@ class Charge {
     required this.message,
   });
 
-  int bookingPrice;
-  int currentCharge;
+  double bookingPrice;
+  double currentCharge;
   dynamic discountCharge;
-  int sellingPrice;
-  int profit;
+  double sellingPrice;
+  double profit;
   bool isEvent;
   dynamic eventId;
   bool highlight;
