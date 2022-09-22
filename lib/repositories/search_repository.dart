@@ -1,5 +1,5 @@
 import 'package:qtec_asssessment/models/search/search_model.dart';
-import 'package:qtec_asssessment/services/api_service.dart';
+import 'package:qtec_asssessment/services/search_api_service.dart';
 
 import '../models/api_response.dart';
 

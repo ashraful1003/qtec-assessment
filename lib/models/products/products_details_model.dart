@@ -2,9 +2,11 @@ import 'dart:convert';
 
 import '../search/search_data_model.dart';
 
-ProductDetailsModel productDetailsModelFromJson(String str) => ProductDetailsModel.fromJson(json.decode(str));
+ProductDetailsModel productDetailsModelFromJson(String str) =>
+    ProductDetailsModel.fromJson(json.decode(str));
 
-String productDetailsModelToJson(ProductDetailsModel data) => json.encode(data.toJson());
+String productDetailsModelToJson(ProductDetailsModel data) =>
+    json.encode(data.toJson());
 
 class ProductDetailsModel {
   ProductDetailsModel({
@@ -19,19 +21,20 @@ class ProductDetailsModel {
   Data data;
   String error;
 
-  factory ProductDetailsModel.fromJson(Map<String, dynamic> json) => ProductDetailsModel(
-    status: json["status"],
-    statusCode: json["statusCode"],
-    data: Data.fromJson(json["data"]),
-    error: json["error"],
-  );
+  factory ProductDetailsModel.fromJson(Map<String, dynamic> json) =>
+      ProductDetailsModel(
+        status: json["status"],
+        statusCode: json["statusCode"],
+        data: Data.fromJson(json["data"]),
+        error: json["error"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "status": status,
-    "statusCode": statusCode,
-    "data": data.toJson(),
-    "error": error,
-  };
+        "status": status,
+        "statusCode": statusCode,
+        "data": data.toJson(),
+        "error": error,
+      };
 }
 
 // class Brand {

@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-String apiUrl = 'https://panel.supplyline.network/api/';
+String apiRoot = 'https://panel.supplyline.network/api/product-details/';
 String buy = 'ক্রয়', sell = 'বিক্রয়', profit = 'লাভ';
 String notStock = 'স্টকে নাই';
 String productBar = 'প্রোডাক্ট ডিটেইল';
