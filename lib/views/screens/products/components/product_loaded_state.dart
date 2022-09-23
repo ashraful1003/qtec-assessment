@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:qtec_asssessment/constants.dart';
@@ -14,18 +15,17 @@ class ProductLoadedState extends StatelessWidget {
     var value = detailsModel.data;
     return Column(
       children: [
-        Container(
-          height: 300,
-          width: 300,
-          child: PageView.builder(
-              itemCount: 3,
-              itemBuilder: (context, index) {
-                return Image.network(value.image);
-              }),
+        CarouselSlider.builder(
+          options: CarouselOptions(
+              viewportFraction: 0.75, enlargeCenterPage: true, height: 300),
+          itemCount: 3,
+          itemBuilder: (context, index, realIndex) {
+            return buildSlider(value.image);
+          },
         ),
         Container(
           width: MediaQuery.of(context).size.width,
-          margin: const EdgeInsets.symmetric(horizontal: 15),
+          margin: const EdgeInsets.fromLTRB(15, 32, 15, 0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -34,7 +34,7 @@ class ProductLoadedState extends StatelessWidget {
                 style:
                     const TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 16,
               ),
               Row(
@@ -77,7 +77,7 @@ class ProductLoadedState extends StatelessWidget {
               Container(
                 height: 115,
                 width: MediaQuery.of(context).size.width,
-                margin: EdgeInsets.only(top: 16),
+                margin: const EdgeInsets.only(top: 16),
                 padding:
                     const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
                 decoration: BoxDecoration(
@@ -91,28 +91,28 @@ class ProductLoadedState extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        TextOne(buyPrice),
-                        TextOne(' ৳ ${value.charge.currentCharge.toString()}'),
+                        textOne(buyPrice),
+                        textOne(' ৳ ${value.charge.currentCharge.toString()}'),
                       ],
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        TextTwo(sellPrice),
-                        TextTwo(' ৳ ${value.charge.sellingPrice.toString()}'),
+                        textTwo(sellPrice),
+                        textTwo(' ৳ ${value.charge.sellingPrice.toString()}'),
                       ],
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        TextTwo('$profitঃ'),
-                        TextTwo(' ৳ ${value.charge.profit.toString()}'),
+                        textTwo('$profitঃ'),
+                        textTwo(' ৳ ${value.charge.profit.toString()}'),
                       ],
                     ),
                   ],
                 ),
               ),
-              Text(
+              const Text(
                 'বিস্তারিত',
                 style: TextStyle(
                   fontSize: 20,
@@ -127,7 +127,7 @@ class ProductLoadedState extends StatelessWidget {
     );
   }
 
-  TextOne(String value) {
+  textOne(String value) {
     return Text(
       value,
       style: TextStyle(
@@ -135,10 +135,21 @@ class ProductLoadedState extends StatelessWidget {
     );
   }
 
-  TextTwo(String value) {
+  textTwo(String value) {
     return Text(
       value,
-      style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+      style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+    );
+  }
+
+  buildSlider(String url) {
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 0),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(15),
+        image: DecorationImage(image: NetworkImage(url)),
+      ),
     );
   }
 }
