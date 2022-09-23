@@ -1,8 +1,5 @@
-import 'dart:async';
-
-import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:get_it/get_it.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qtec_asssessment/models/api_response.dart';
 import 'package:qtec_asssessment/models/search/search_model.dart';
 import 'package:qtec_asssessment/repositories/search_repository.dart';

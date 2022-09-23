@@ -6,8 +6,8 @@ import 'package:qtec_asssessment/views/screens/products/components/arguments.dar
 import 'package:qtec_asssessment/views/utils/search_bar.dart';
 
 import '../../../bloc/navigation/nav_bloc.dart';
-import 'components/loaded_state.dart';
-import 'components/loading_state.dart';
+import 'components/search_loaded_state.dart';
+import '../../utils/search_loading_state.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -63,9 +63,9 @@ class _HomePageState extends State<HomePage> {
                     child: BlocBuilder<SearchBloc, SearchState>(
                         builder: (context, state) {
                       if (state is SearchInitial || state is SearchLoading) {
-                        return LoadingState();
+                        return const LoadingState();
                       } else if (state is SearchLoaded) {
-                        return LoadedState(
+                        return SearchLoadedState(
                           model: state.searchApiResponse.data!,
                         );
                       } else {

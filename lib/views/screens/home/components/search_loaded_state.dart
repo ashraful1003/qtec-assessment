@@ -6,25 +6,25 @@ import 'package:qtec_asssessment/views/utils/text_formatting.dart';
 
 import '../../../../bloc/navigation/nav_bloc.dart';
 
-class LoadedState extends StatelessWidget {
-  const LoadedState({Key? key, required this.model}) : super(key: key);
+class SearchLoadedState extends StatelessWidget {
+  const SearchLoadedState({Key? key, required this.model}) : super(key: key);
 
   final SearchModel model;
 
   @override
   Widget build(BuildContext context) {
-    var value = model.data!.products.searchProducts;
+    var value = model.data.products.results;
     return GridView.builder(
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             mainAxisExtent: 300, crossAxisCount: 2),
-        itemCount: value!.length,
+        itemCount: value.length,
         itemBuilder: (context, index) {
           return InkWell(
             onTap: () {
               BlocProvider.of<NavBloc>(context)
-                  .add(ProductEvent(value[index].slug!));
+                  .add(ProductEvent(value[index].slug));
             },
             child: Container(
               width: 40,
@@ -46,7 +46,7 @@ class LoadedState extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         Visibility(
-                          visible: value[index].stock! > 0 ? false : true,
+                          visible: value[index].stock > 0 ? false : true,
                           child: Container(
                             height: 20,
                             padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -64,14 +64,14 @@ class LoadedState extends StatelessWidget {
                           height: 115,
                           decoration: BoxDecoration(
                             image: DecorationImage(
-                                image: NetworkImage(value[index].image!)),
+                                image: NetworkImage(value[index].image)),
                           ),
                         ),
                       ],
                     ),
                   ),
                   Text(
-                    value[index].productName!,
+                    value[index].productName,
                     style: const TextStyle(
                         fontWeight: FontWeight.w500, fontSize: 16),
                   ),
@@ -79,7 +79,7 @@ class LoadedState extends StatelessWidget {
                     children: [
                       TextFormatting(data: buy),
                       Text(
-                        ' ৳ ${value[index].charge!.currentCharge.toString()}',
+                        ' ৳ ${value[index].charge.currentCharge.toString()}',
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w600,
@@ -95,7 +95,7 @@ class LoadedState extends StatelessWidget {
                         children: [
                           TextFormatting(data: sell),
                           Text(
-                              ' ৳ ${value[index].charge!.sellingPrice.toString()}',
+                              ' ৳ ${value[index].charge.sellingPrice.toString()}',
                               style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w600,
@@ -107,7 +107,7 @@ class LoadedState extends StatelessWidget {
                         children: [
                           TextFormatting(data: profit),
                           Text(
-                            ' ৳ ${value[index].charge!.profit.toString()}',
+                            ' ৳ ${value[index].charge.profit.toString()}',
                             style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w600,

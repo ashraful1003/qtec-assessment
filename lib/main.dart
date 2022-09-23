@@ -1,16 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get_it/get_it.dart';
 import 'package:qtec_asssessment/constants.dart';
 import 'package:qtec_asssessment/repositories/search_repository.dart';
 import 'package:qtec_asssessment/views/screens/home/home_page.dart';
 import 'package:qtec_asssessment/views/screens/products/products_page.dart';
 
 import 'bloc/navigation/nav_bloc.dart';
-
-void setupLocator() {
-  GetIt.instance.registerLazySingleton(() => SearchRepository());
-}
 
 void main() {
   runApp(BlocProvider(
@@ -30,8 +25,8 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: hexToColor(bgColor),
       ),
       routes: {
-        '/': (context) => HomePage(),
-        '/products': (context) => ProductsPage(),
+        '/': (context) => const HomePage(),
+        '/products': (context) => const ProductsPage(),
       },
       initialRoute: '/',
     );
