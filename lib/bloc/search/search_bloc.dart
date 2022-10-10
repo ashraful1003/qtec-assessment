@@ -13,11 +13,15 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     final SearchRepository repository = SearchRepository();
     on<SearchEvent>((event, emit) async {
       // TODO: implement event handler
-      String limit = '10', searchWord = 'rice';
+      String? limit, searchWord;
+      if (event is GetSearchProductList) {
+        limit = event.limit;
+        searchWord = event.searchWord;
+      }
       try {
         emit(SearchLoading());
         final productsList =
-            await repository.fetchSearchProductsList(limit, searchWord);
+            await repository.fetchSearchProductsList(limit!, searchWord!);
         emit(SearchLoaded(productsList));
         if (productsList.error) {
           emit(SearchError(message: productsList.errorMessage));

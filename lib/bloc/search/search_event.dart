@@ -8,4 +8,7 @@ abstract class SearchEvent extends Equatable {
   List<Object?> get props => [];
 }
 
-class GetSearchProductList extends SearchEvent {}
+class GetSearchProductList extends SearchEvent {
+  final String limit, searchWord;
+  const GetSearchProductList(this.limit, this.searchWord);
+}

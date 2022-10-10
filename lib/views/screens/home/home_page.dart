@@ -19,11 +19,13 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   SearchBloc searchBloc = SearchBloc();
   TextEditingController searchController = TextEditingController();
+  String limit = '10';
 
   @override
   void initState() {
     // TODO: implement initState
-    searchBloc.add(GetSearchProductList());
+    searchController.text = 'rice';
+    searchBloc.add(GetSearchProductList(limit, searchController.text));
     super.initState();
   }
 

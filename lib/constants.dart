@@ -12,6 +12,8 @@ String distributor = 'ডিস্ট্রিবিউটরঃ';
 String color1 = '#DA2079';
 String color2 = '#646464';
 String bgColor = '#F7F2FF';
+String gradient1 = '#6210E1';
+String gradient2 = '#1400AE';
 
 Color hexToColor(String hexString, {String alphaChannel = 'FF'}) {
   return Color(int.parse(hexString.replaceFirst('#', '0x$alphaChannel')));

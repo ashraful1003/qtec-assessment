@@ -8,7 +8,6 @@ class SearchRepository {
 
   Future<APIResponse<SearchModel>> fetchSearchProductsList(
       String limit, String searchWord) {
-    print("hello");
     return _searchService.fetchSearchProductsList(limit, searchWord);
   }
 }
